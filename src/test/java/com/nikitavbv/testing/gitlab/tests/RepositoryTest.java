@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RepositoryTest extends GitlabTest {
 
@@ -37,13 +38,11 @@ public class RepositoryTest extends GitlabTest {
   public void test_edit_file() throws InterruptedException {
     var project = testProject();
 
-    Thread.sleep(5000);
     var filePage = project.openReadmeFile();
     String fileSize = filePage.fileSize();
 
     var editorPage = filePage.editFile();
 
-    Thread.sleep(5000);
     editorPage.addTable();
     filePage = editorPage.commitChanges();
 

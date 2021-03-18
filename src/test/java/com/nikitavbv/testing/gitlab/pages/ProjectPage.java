@@ -5,6 +5,9 @@ import static com.nikitavbv.testing.gitlab.Utils.path;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProjectPage {
 
@@ -31,6 +34,7 @@ public class ProjectPage {
   }
 
   public ProjectFilePage openReadmeFile() {
+    new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(readmeFileBy));
     driver.findElement(readmeFileBy).click();
     return new ProjectFilePage(driver);
   }
